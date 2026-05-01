@@ -365,7 +365,7 @@
   .admin-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .admin-title { font-size: 17px; font-weight: 600; }
   .admin-month { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .admin-btns { display: flex; gap: 8px; }
+  .admin-btns { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
   .admin-btn {
     font-size: 12px;
     padding: 7px 12px;
@@ -378,6 +378,38 @@
   }
   .admin-btn:active { background: var(--bg); }
   .admin-btn.danger { color: var(--danger); border-color: #f5c6c6; }
+  .admin-btn.primary { background: var(--navy); color: white; border-color: var(--navy); }
+
+  /* ADMIN TABS */
+  .admin-tab-nav {
+    display: flex;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 4px;
+    margin-bottom: 16px;
+    gap: 4px;
+  }
+  .admin-tab-btn {
+    flex: 1;
+    padding: 8px 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--muted);
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .admin-tab-btn.active {
+    background: var(--surface);
+    color: var(--navy);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
 
   /* ADMIN ITEM ROW */
   .adm-item-row {
@@ -422,6 +454,191 @@
     color: var(--text);
   }
   .adm-set-btn:active { background: var(--bg); }
+
+  /* PRODUCT MANAGEMENT */
+  .prod-mgmt-section { margin-bottom: 16px; }
+  .prod-mgmt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .prod-mgmt-title { font-size: 14px; font-weight: 600; }
+  .prod-mgmt-sub { font-size: 12px; color: var(--muted); }
+
+  /* ADD PRODUCT FORM */
+  .add-product-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .add-product-form h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .form-grid-full { grid-column: 1 / -1; }
+  .form-label { font-size: 11px; font-weight: 600; color: var(--muted); display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .form-input {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .form-input:focus { outline: none; border-color: var(--navy); }
+  .form-select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    appearance: none;
+    cursor: pointer;
+  }
+  .form-select:focus { outline: none; border-color: var(--navy); }
+  .form-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-add-product {
+    flex: 1;
+    padding: 10px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-add-product:active { opacity: 0.85; }
+  .btn-cancel-form {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+
+  /* PRODUCT MANAGE ROWS */
+  .prod-cat-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+  .prod-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    user-select: none;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .prod-cat-icon { font-size: 18px; }
+  .prod-cat-label { font-size: 13px; font-weight: 600; flex: 1; }
+  .prod-cat-count { font-size: 11px; color: var(--muted); }
+  .prod-cat-chevron { font-size: 10px; color: var(--muted); transition: transform 0.2s; }
+  .prod-cat-chevron.open { transform: rotate(90deg); }
+  .prod-cat-items { display: none; }
+  .prod-cat-items.open { display: block; }
+
+  .prod-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .prod-item-row:last-child { border-bottom: none; }
+  .prod-item-row:hover { background: #fafaf8; }
+  .prod-item-info { flex: 1; min-width: 0; }
+  .prod-item-name-display { font-size: 13px; font-weight: 500; }
+  .prod-item-meta { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .prod-item-id { font-size: 10px; color: #bbb; font-family: 'DM Mono', monospace; }
+
+  /* Inline edit fields */
+  .prod-edit-fields { display: none; flex-direction: column; gap: 6px; margin-top: 6px; }
+  .prod-edit-fields.open { display: flex; }
+  .prod-edit-row { display: flex; gap: 6px; }
+  .prod-edit-input {
+    flex: 1;
+    padding: 7px 9px;
+    border: 1px solid var(--navy);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    background: white;
+    color: var(--text);
+  }
+  .prod-edit-input:focus { outline: none; }
+  .prod-edit-actions { display: flex; gap: 6px; }
+  .btn-save-edit {
+    padding: 6px 14px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-cancel-edit {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+
+  .prod-actions { display: flex; gap: 6px; flex-shrink: 0; }
+  .btn-edit-prod {
+    font-size: 11px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+  .btn-edit-prod:active { background: #e8e6e0; }
+  .btn-delete-prod {
+    font-size: 11px;
+    padding: 5px 8px;
+    border: 1px solid #f5c6c6;
+    background: #fff5f5;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--danger);
+  }
+  .btn-delete-prod:active { background: #fde8e8; }
+
+  /* ADD CATEGORY */
+  .add-cat-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .add-cat-form h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .cat-form-row { display: flex; gap: 8px; margin-bottom: 8px; }
 
   /* LOG */
   .log-wrap { margin-top: 20px; }
@@ -600,7 +817,6 @@
     color: var(--text);
   }
 
-
   /* INLINE PIN (inside admin page, not fixed) */
   .pin-overlay-inline {
     padding: 40px 20px;
@@ -611,6 +827,54 @@
 
   /* REQUEST ORDER */
   .req-item-row input:focus { outline: none; border-color: var(--navy); }
+
+  /* CONFIRM DELETE MODAL */
+  .confirm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 400;
+    padding: 24px;
+  }
+  .confirm-modal-box {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 24px;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+  .confirm-modal-icon { font-size: 36px; margin-bottom: 10px; }
+  .confirm-modal-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .confirm-modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+  .confirm-modal-btns { display: flex; gap: 8px; }
+  .btn-confirm-delete {
+    flex: 1;
+    padding: 11px;
+    background: var(--danger);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-confirm-cancel {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid var(--border);
+    background: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+  }
+
   @media print {
     body * { visibility: hidden; }
     .print-area, .print-area * { visibility: visible; }
@@ -689,15 +953,94 @@
           <button class="admin-btn" onclick="lockAdmin()">Lock</button>
         </div>
       </div>
-      <div class="info-note" style="margin-bottom:14px;">Set starting quantities for each item. Staff cannot exceed these counts.</div>
-      <div id="admin-categories"></div>
-      <div class="log-wrap">
-        <div class="log-head">Checkout Log</div>
-        <div class="log-card" id="log-list"></div>
+
+      <!-- ADMIN SECTION TABS -->
+      <div class="admin-tab-nav">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('inventory')" id="atab-inventory">📊 Inventory</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('products')" id="atab-products">🗂 Products</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('log')" id="atab-log">📋 Log</button>
+      </div>
+
+      <!-- INVENTORY TAB -->
+      <div id="admin-tab-inventory">
+        <div class="info-note" style="margin-bottom:14px;">Set starting quantities for each item. Staff cannot exceed these counts.</div>
+        <div id="admin-categories"></div>
+      </div>
+
+      <!-- PRODUCTS TAB -->
+      <div id="admin-tab-products" style="display:none;">
+        <div class="info-note" style="margin-bottom:14px;">Add, remove, or rename products and categories. Changes apply immediately to the checkout form.</div>
+
+        <!-- ADD PRODUCT FORM (hidden by default) -->
+        <div id="add-product-form" class="add-product-form" style="display:none;">
+          <h4>➕ Add New Product</h4>
+          <div class="form-grid">
+            <div class="form-grid-full">
+              <label class="form-label">Product Name *</label>
+              <input class="form-input" id="new-prod-name" placeholder="e.g. America250 T-Shirt" />
+            </div>
+            <div>
+              <label class="form-label">Size</label>
+              <input class="form-input" id="new-prod-size" placeholder="e.g. M, Large, 12×12" />
+            </div>
+            <div>
+              <label class="form-label">Color</label>
+              <input class="form-input" id="new-prod-color" placeholder="e.g. Navy Blue" />
+            </div>
+            <div class="form-grid-full">
+              <label class="form-label">Category *</label>
+              <select class="form-select" id="new-prod-cat"></select>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-add-product" onclick="addProduct()">Add Product</button>
+            <button class="btn-cancel-form" onclick="toggleAddProductForm(false)">Cancel</button>
+          </div>
+        </div>
+
+        <!-- ADD CATEGORY FORM (hidden by default) -->
+        <div id="add-cat-form" class="add-cat-form" style="display:none;">
+          <h4>📁 Add New Category</h4>
+          <div class="cat-form-row">
+            <div style="flex:0 0 60px;">
+              <label class="form-label">Icon</label>
+              <input class="form-input" id="new-cat-icon" placeholder="🎁" maxlength="4" style="text-align:center;font-size:20px;" />
+            </div>
+            <div style="flex:1;">
+              <label class="form-label">Category Name *</label>
+              <input class="form-input" id="new-cat-name" placeholder="e.g. Accessories" />
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-add-product" onclick="addCategory()">Add Category</button>
+            <button class="btn-cancel-form" onclick="toggleAddCatForm(false)">Cancel</button>
+          </div>
+        </div>
+
+        <!-- PRODUCT MGMT HEADER -->
+        <div class="prod-mgmt-header">
+          <div>
+            <div class="prod-mgmt-title">All Products</div>
+            <div class="prod-mgmt-sub" id="prod-count-label"></div>
+          </div>
+          <div style="display:flex;gap:6px;">
+            <button class="admin-btn" onclick="toggleAddCatForm(true)">+ Category</button>
+            <button class="admin-btn primary" onclick="toggleAddProductForm(true)">+ Product</button>
+          </div>
+        </div>
+
+        <div id="product-management-list"></div>
+      </div>
+
+      <!-- LOG TAB -->
+      <div id="admin-tab-log" style="display:none;">
+        <div class="log-wrap" style="margin-top:0;">
+          <div class="log-head">Checkout Log</div>
+          <div class="log-card" id="log-list"></div>
+        </div>
       </div>
     </div>
   </div>
-
 
   <!-- REQUEST ORDER PAGE -->
   <div id="page-request" class="page">
@@ -796,6 +1139,19 @@
 
 <div class="toast" id="toast"></div>
 
+<!-- CONFIRM DELETE MODAL -->
+<div class="confirm-modal-overlay" id="confirm-delete-modal" style="display:none;">
+  <div class="confirm-modal-box">
+    <div class="confirm-modal-icon">🗑️</div>
+    <div class="confirm-modal-title" id="confirm-delete-title">Delete this product?</div>
+    <div class="confirm-modal-sub" id="confirm-delete-sub">This action cannot be undone.</div>
+    <div class="confirm-modal-btns">
+      <button class="btn-confirm-delete" id="confirm-delete-btn">Delete</button>
+      <button class="btn-confirm-cancel" onclick="closeConfirmDelete()">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- QR LIB -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
@@ -807,9 +1163,14 @@ let log = [];
 let staffQtys = {};
 let openCats = {};
 let adminOpenCats = {};
+let prodOpenCats = {};
 let currentTab = 'staff';
+let currentAdminTab = 'inventory';
+let pendingDeleteId = null;
+let pendingDeleteCatKey = null;
 
-const CATEGORIES = [
+// ---- DEFAULT CATEGORIES (used only if no custom data in localStorage) ----
+const DEFAULT_CATEGORIES = [
   { key: 'headwear', label: 'Headwear', icon: '🧢', items: [
     { id: 'h1', name: '8" Beanie', size: null, color: 'Red' },
     { id: 'h2', name: '8" Beanie', size: null, color: 'Black' },
@@ -904,20 +1265,41 @@ const CATEGORIES = [
   ]},
 ];
 
+// CATEGORIES is now live/mutable (loaded from localStorage or defaults)
+let CATEGORIES = [];
+
 /* ---- STORAGE ---- */
 function lsGet(k) { try { return JSON.parse(localStorage.getItem(k)); } catch(e) { return null; } }
 function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {} }
 
 function loadState() {
+  // Load categories (product catalog)
+  const savedCats = lsGet('a250_categories');
+  if (savedCats && savedCats.length) {
+    CATEGORIES = savedCats;
+  } else {
+    CATEGORIES = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)); // deep copy
+  }
+
+  // Load inventory
   const inv = lsGet('a250_inventory');
   if (inv && inv.length) { inventory = inv; }
-  else { CATEGORIES.forEach(c => c.items.forEach(i => inventory.push({ id: i.id, start: 0, taken: 0 }))); }
+  else {
+    inventory = [];
+    CATEGORIES.forEach(c => c.items.forEach(i => inventory.push({ id: i.id, start: 0, taken: 0 })));
+  }
+  // Ensure all current items have inventory entries
+  CATEGORIES.forEach(c => c.items.forEach(i => { if (!getInv(i.id)) inventory.push({ id: i.id, start: 0, taken: 0 }); }));
+
   log = lsGet('a250_log') || [];
 }
+
 function saveState() {
+  lsSet('a250_categories', CATEGORIES);
   lsSet('a250_inventory', inventory);
   lsSet('a250_log', log);
 }
+
 function getInv(id) { return inventory.find(i => i.id === id); }
 function getOrCreate(id) {
   let it = getInv(id);
@@ -1040,7 +1422,6 @@ function submitCheckout() {
     showToast('Select at least one item'); return;
   }
 
-  // If any out-of-stock items, show the preorder modal
   if (outOfStock.length > 0) {
     pendingCheckout = { name, inStock, outOfStock };
     document.getElementById('preorder-items-list').innerHTML =
@@ -1065,7 +1446,6 @@ function confirmPreorder() {
 }
 
 function finalizeCheckout(name, inStock, preorders) {
-  // Process in-stock items
   inStock.forEach(item => {
     const it = getOrCreate(item.id);
     it.taken += item.qty;
@@ -1134,7 +1514,18 @@ function openAdmin() {
   }
 }
 
-// admin accessed via logo long-press only
+/* ---- ADMIN SECTION TABS ---- */
+function switchAdminTab(tab) {
+  currentAdminTab = tab;
+  ['inventory','products','log'].forEach(t => {
+    document.getElementById('admin-tab-'+t).style.display = (t===tab) ? 'block' : 'none';
+    const btn = document.getElementById('atab-'+t);
+    if (btn) btn.classList.toggle('active', t===tab);
+  });
+  if (tab === 'products') renderProductManagement();
+  if (tab === 'log') renderLog();
+  if (tab === 'inventory') renderAdmin();
+}
 
 /* ---- PIN ---- */
 function pinTyped() {
@@ -1155,9 +1546,10 @@ function checkPin() {
 }
 function lockAdmin() { adminUnlocked=false; switchTab('staff'); }
 
-/* ---- ADMIN RENDER ---- */
+/* ---- ADMIN RENDER (Inventory tab) ---- */
 function renderAdmin() {
   const container = document.getElementById('admin-categories');
+  if (!container) return;
   container.innerHTML='';
   const now = new Date();
   document.getElementById('month-label').textContent = now.toLocaleDateString('en-US',{month:'long',year:'numeric'});
@@ -1200,7 +1592,6 @@ function renderAdmin() {
       wrap.appendChild(row);
     });
   });
-  renderLog();
 }
 
 function toggleAdminCat(k) { adminOpenCats[k]=!adminOpenCats[k]; renderAdmin(); }
@@ -1226,9 +1617,260 @@ function resetMonth() {
   showToast('Month reset!');
 }
 
+/* ---- PRODUCT MANAGEMENT ---- */
+
+function toggleAddProductForm(show) {
+  document.getElementById('add-product-form').style.display = show ? 'block' : 'none';
+  if (show) {
+    // Populate category dropdown
+    const sel = document.getElementById('new-prod-cat');
+    sel.innerHTML = CATEGORIES.map(c => `<option value="${c.key}">${c.icon} ${c.label}</option>`).join('');
+    document.getElementById('new-prod-name').focus();
+  }
+}
+
+function toggleAddCatForm(show) {
+  document.getElementById('add-cat-form').style.display = show ? 'block' : 'none';
+  if (show) document.getElementById('new-cat-name').focus();
+}
+
+function generateId(prefix) {
+  return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+}
+
+function addProduct() {
+  const name = document.getElementById('new-prod-name').value.trim();
+  const size = document.getElementById('new-prod-size').value.trim() || null;
+  const color = document.getElementById('new-prod-color').value.trim() || null;
+  const catKey = document.getElementById('new-prod-cat').value;
+
+  if (!name) { showToast('Product name is required'); return; }
+
+  const cat = CATEGORIES.find(c => c.key === catKey);
+  if (!cat) { showToast('Invalid category'); return; }
+
+  const newItem = {
+    id: generateId(catKey),
+    name,
+    size,
+    color
+  };
+  cat.items.push(newItem);
+  inventory.push({ id: newItem.id, start: 0, taken: 0 });
+  saveState();
+
+  // Reset form
+  document.getElementById('new-prod-name').value = '';
+  document.getElementById('new-prod-size').value = '';
+  document.getElementById('new-prod-color').value = '';
+  toggleAddProductForm(false);
+
+  renderProductManagement();
+  renderStaff();
+  renderAdmin();
+  showToast(`"${name}" added to ${cat.label}`);
+}
+
+function addCategory() {
+  const name = document.getElementById('new-cat-name').value.trim();
+  const icon = document.getElementById('new-cat-icon').value.trim() || '📦';
+
+  if (!name) { showToast('Category name is required'); return; }
+
+  const key = 'cat_' + name.toLowerCase().replace(/[^a-z0-9]/g,'_') + '_' + Date.now().toString(36);
+  CATEGORIES.push({ key, label: name, icon, items: [] });
+  saveState();
+
+  document.getElementById('new-cat-name').value = '';
+  document.getElementById('new-cat-icon').value = '';
+  toggleAddCatForm(false);
+
+  renderProductManagement();
+  renderStaff();
+  renderAdmin();
+  showToast(`Category "${name}" added`);
+}
+
+function renderProductManagement() {
+  const container = document.getElementById('product-management-list');
+  if (!container) return;
+  container.innerHTML = '';
+
+  let totalProducts = 0;
+  CATEGORIES.forEach(c => totalProducts += c.items.length);
+  const lbl = document.getElementById('prod-count-label');
+  if (lbl) lbl.textContent = `${totalProducts} products across ${CATEGORIES.length} categories`;
+
+  CATEGORIES.forEach(cat => {
+    const isOpen = prodOpenCats[cat.key] !== false;
+    const block = document.createElement('div');
+    block.className = 'prod-cat-block';
+
+    const canDeleteCat = cat.items.length === 0;
+
+    block.innerHTML = `
+      <div class="prod-cat-header" onclick="toggleProdCat('${cat.key}')">
+        <span class="prod-cat-icon">${cat.icon}</span>
+        <span class="prod-cat-label">${cat.label}</span>
+        <span class="prod-cat-count">${cat.items.length} items</span>
+        ${canDeleteCat ? `<button class="btn-delete-prod" style="margin-left:8px;" onclick="event.stopPropagation();confirmDeleteCategory('${cat.key}')">Remove</button>` : ''}
+        <span class="prod-cat-chevron ${isOpen?'open':''}">▶</span>
+      </div>
+      <div class="prod-cat-items ${isOpen?'open':''}" id="pc-${cat.key}"></div>`;
+    container.appendChild(block);
+
+    const wrap = block.querySelector(`#pc-${cat.key}`);
+    if (cat.items.length === 0) {
+      const empty = document.createElement('div');
+      empty.style.cssText = 'padding:14px;font-size:13px;color:var(--muted);text-align:center;';
+      empty.textContent = 'No products yet. Add one above.';
+      wrap.appendChild(empty);
+    } else {
+      cat.items.forEach(item => {
+        const sub = label(item);
+        const row = document.createElement('div');
+        row.className = 'prod-item-row';
+        row.id = `prow-${item.id}`;
+        row.innerHTML = `
+          <div class="prod-item-info">
+            <div class="prod-item-name-display" id="pdisplay-${item.id}">${item.name}</div>
+            ${sub ? `<div class="prod-item-meta">${sub}</div>` : ''}
+            <!-- INLINE EDIT FIELDS -->
+            <div class="prod-edit-fields" id="pedit-${item.id}">
+              <div class="prod-edit-row">
+                <input class="prod-edit-input" id="pename-${item.id}" value="${item.name}" placeholder="Product name" />
+              </div>
+              <div class="prod-edit-row">
+                <input class="prod-edit-input" id="pesize-${item.id}" value="${item.size||''}" placeholder="Size (optional)" />
+                <input class="prod-edit-input" id="pecolor-${item.id}" value="${item.color||''}" placeholder="Color (optional)" />
+              </div>
+              <div class="prod-edit-actions">
+                <button class="btn-save-edit" onclick="saveProductEdit('${cat.key}','${item.id}')">Save</button>
+                <button class="btn-cancel-edit" onclick="cancelProductEdit('${item.id}')">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <div class="prod-actions" id="pactions-${item.id}">
+            <button class="btn-edit-prod" onclick="startProductEdit('${item.id}')">Edit</button>
+            <button class="btn-delete-prod" onclick="confirmDeleteProduct('${cat.key}','${item.id}')">Delete</button>
+          </div>`;
+        wrap.appendChild(row);
+      });
+    }
+  });
+}
+
+function toggleProdCat(k) {
+  prodOpenCats[k] = !prodOpenCats[k];
+  const el = document.getElementById('pc-'+k);
+  const chev = el?.previousElementSibling?.querySelector('.prod-cat-chevron');
+  if (el) el.classList.toggle('open', prodOpenCats[k]);
+  if (chev) chev.classList.toggle('open', prodOpenCats[k]);
+}
+
+function startProductEdit(id) {
+  document.getElementById('pedit-'+id).classList.add('open');
+  document.getElementById('pactions-'+id).style.display = 'none';
+  document.getElementById('pename-'+id).focus();
+}
+
+function cancelProductEdit(id) {
+  document.getElementById('pedit-'+id).classList.remove('open');
+  document.getElementById('pactions-'+id).style.display = 'flex';
+}
+
+function saveProductEdit(catKey, id) {
+  const newName = document.getElementById('pename-'+id).value.trim();
+  const newSize = document.getElementById('pesize-'+id).value.trim() || null;
+  const newColor = document.getElementById('pecolor-'+id).value.trim() || null;
+
+  if (!newName) { showToast('Name cannot be empty'); return; }
+
+  const cat = CATEGORIES.find(c => c.key === catKey);
+  if (!cat) return;
+  const item = cat.items.find(i => i.id === id);
+  if (!item) return;
+
+  item.name = newName;
+  item.size = newSize;
+  item.color = newColor;
+  saveState();
+
+  renderProductManagement();
+  renderStaff();
+  renderAdmin();
+  showToast('Product updated');
+}
+
+/* ---- DELETE FLOWS ---- */
+function confirmDeleteProduct(catKey, id) {
+  const cat = CATEGORIES.find(c => c.key === catKey);
+  const item = cat?.items.find(i => i.id === id);
+  if (!item) return;
+
+  const sub = label(item);
+  document.getElementById('confirm-delete-title').textContent = `Delete "${item.name}"?`;
+  document.getElementById('confirm-delete-sub').textContent =
+    (sub ? sub + ' · ' : '') + 'This cannot be undone. Inventory data for this item will also be removed.';
+
+  pendingDeleteId = id;
+  pendingDeleteCatKey = catKey;
+  document.getElementById('confirm-delete-btn').onclick = executeDeleteProduct;
+  document.getElementById('confirm-delete-modal').style.display = 'flex';
+}
+
+function executeDeleteProduct() {
+  if (!pendingDeleteCatKey || !pendingDeleteId) return;
+  const cat = CATEGORIES.find(c => c.key === pendingDeleteCatKey);
+  if (cat) {
+    const idx = cat.items.findIndex(i => i.id === pendingDeleteId);
+    if (idx !== -1) cat.items.splice(idx, 1);
+  }
+  // Remove inventory entry
+  const invIdx = inventory.findIndex(i => i.id === pendingDeleteId);
+  if (invIdx !== -1) inventory.splice(invIdx, 1);
+
+  saveState();
+  closeConfirmDelete();
+  renderProductManagement();
+  renderStaff();
+  renderAdmin();
+  showToast('Product deleted');
+}
+
+function confirmDeleteCategory(catKey) {
+  const cat = CATEGORIES.find(c => c.key === catKey);
+  if (!cat) return;
+  document.getElementById('confirm-delete-title').textContent = `Remove category "${cat.label}"?`;
+  document.getElementById('confirm-delete-sub').textContent = 'The category is empty and will be permanently removed.';
+  pendingDeleteCatKey = catKey;
+  pendingDeleteId = null;
+  document.getElementById('confirm-delete-btn').onclick = executeDeleteCategory;
+  document.getElementById('confirm-delete-modal').style.display = 'flex';
+}
+
+function executeDeleteCategory() {
+  if (!pendingDeleteCatKey) return;
+  const idx = CATEGORIES.findIndex(c => c.key === pendingDeleteCatKey);
+  if (idx !== -1) CATEGORIES.splice(idx, 1);
+  saveState();
+  closeConfirmDelete();
+  renderProductManagement();
+  renderStaff();
+  renderAdmin();
+  showToast('Category removed');
+}
+
+function closeConfirmDelete() {
+  document.getElementById('confirm-delete-modal').style.display = 'none';
+  pendingDeleteId = null;
+  pendingDeleteCatKey = null;
+}
+
 /* ---- LOG ---- */
 function renderLog() {
   const list = document.getElementById('log-list');
+  if (!list) return;
   if (!log.length) { list.innerHTML='<div class="empty-log">No checkouts recorded yet.</div>'; return; }
   list.innerHTML = log.slice(0,40).map(e => {
     const t = new Date(e.time);
@@ -1317,17 +1959,14 @@ function printQR() {
   w.document.close();
 }
 
-
 /* ---- LOGO LONG PRESS (secret admin access) ---- */
 let logoTimer = null;
 document.addEventListener('DOMContentLoaded', () => {
   const logo = document.getElementById('logo-btn');
   if (!logo) return;
-  // Mouse (desktop)
   logo.addEventListener('mousedown', () => { logoTimer = setTimeout(openAdmin, 1500); });
   logo.addEventListener('mouseup', () => clearTimeout(logoTimer));
   logo.addEventListener('mouseleave', () => clearTimeout(logoTimer));
-  // Touch (mobile)
   logo.addEventListener('touchstart', (e) => { e.preventDefault(); logoTimer = setTimeout(openAdmin, 1500); }, {passive:false});
   logo.addEventListener('touchend', () => clearTimeout(logoTimer));
   logo.addEventListener('touchcancel', () => clearTimeout(logoTimer));
